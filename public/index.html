@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON Formatter & Validator - Free Online Tool | JSONPoint</title>
+  <meta name="description" content="Format, validate, minify, and explore JSON data instantly. Syntax highlighting, tree view, error detection with line numbers. 100% client-side, free, private.">
+  <meta name="keywords" content="json formatter, json validator, json prettifier, json formatter online, format json, json minify, json beautifier, json viewer, json tree view">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0b0e14">
+  <meta name="author" content="Point Digital Tools">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="JSON Formatter & Validator - Free Online Tool | JSONPoint">
+  <meta property="og:description" content="Format, validate, minify, and explore JSON data instantly. Free, private, runs entirely in your browser.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://json-formatter-point.vercel.app/">
+  <meta property="og:site_name" content="Point Digital Tools">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="JSON Formatter & Validator - Free Online Tool | JSONPoint">
+  <meta name="twitter:description" content="Format, validate, and minify JSON data. Syntax highlighting, tree view, error detection. Free and private.">
+
+  <link rel="canonical" href="https://json-formatter-point.vercel.app/">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#123;&#125;</text></svg>">
+
+  <!-- Preconnect for AdSense -->
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+
+  <!-- JSON-LD: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "JSONPoint - JSON Formatter & Validator",
+    "description": "Format, validate, minify, and explore JSON data with syntax highlighting, tree view, and error detection. 100% client-side processing.",
+    "url": "https://json-formatter-point.vercel.app/",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "JSON formatting with configurable indentation",
+      "JSON minification",
+      "Syntax highlighting with line numbers",
+      "Interactive collapsible tree view",
+      "Error detection with line and column numbers",
+      "Copy formatted output to clipboard",
+      "Download as .json file",
+      "Character and line count",
+      "Dark and light theme",
+      "100% client-side processing"
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is JSON formatting?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "JSON formatting (also called prettifying or beautifying) adds proper indentation and line breaks to JSON data, making it human-readable. Minified JSON is compact but hard to read. Formatted JSON uses whitespace to show the hierarchical structure of the data, making it easy to understand and debug."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I validate JSON?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Paste your JSON into the input area and click Format. If the JSON contains syntax errors, the tool will show the exact error message with the line and column number where the problem occurs. Common JSON errors include missing commas, unquoted keys, trailing commas, and single quotes instead of double quotes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between JSON formatting and minifying?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Formatting adds whitespace (indentation and line breaks) to make JSON readable for humans. Minifying removes all unnecessary whitespace to make the JSON as compact as possible, which reduces file size for network transfer and storage. Both operations preserve the data exactly as-is."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this JSON formatter safe to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, completely. All processing happens in your browser using JavaScript. No data is sent to any server, stored, or logged. You can verify this by disconnecting from the internet and confirming the tool still works. Your JSON data never leaves your machine."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is JSON tree view?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tree view displays your JSON data as an interactive, collapsible hierarchy. Objects and arrays can be expanded or collapsed to explore nested structures. Each node shows its key, value type, and content. This is especially useful for large or deeply nested JSON documents where reading raw text is difficult."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2624738239425269" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <a href="/" class="logo" aria-label="Home">
+    <svg class="logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5a2 2 0 0 0 2 2h1"/><path d="M16 3h1a2 2 0 0 1 2 2v5a2 2 0 0 0 2 2 2 2 0 0 0-2 2v5a2 2 0 0 1-2 2h-1"/></svg>
+    <span>JSONPoint</span>
+  </a>
+  <div class="header-actions">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+      <svg id="themeIconSun" class="theme-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg id="themeIconMoon" class="theme-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- Ad: Top Banner -->
+<div class="ad-container ad-top">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2624738239425269"
+       data-ad-slot="SLOT_ID_HERE"
+       data-ad-format="horizontal"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<main class="layout">
+  <div class="main-col">
+
+    <section class="hero">
+      <div class="privacy-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        100% Private &mdash; Processed in your browser, never sent anywhere
+      </div>
+      <h1>Free Online <span class="accent">JSON</span> Formatter & Validator</h1>
+      <p class="hero-sub">Format, validate, minify, and explore JSON data. Syntax highlighting, tree view, and instant error detection.</p>
+    </section>
+
+    <!-- Input Area -->
+    <div class="card glass">
+      <div class="card-header-row">
+        <h2 class="card-title">Input</h2>
+        <div class="card-actions">
+          <button class="btn-small" id="sampleBtn" title="Load sample JSON">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Sample
+          </button>
+          <button class="btn-small" id="clearBtn" title="Clear input">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Clear
+          </button>
+        </div>
+      </div>
+      <textarea id="jsonInput" class="json-textarea" placeholder="Paste your JSON here..." spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off"></textarea>
+      <div class="input-stats" id="inputStats">
+        <span id="charCount">0 characters</span>
+        <span class="stat-dot"></span>
+        <span id="lineCount">0 lines</span>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-bar">
+      <div class="action-main">
+        <button class="btn-generate" id="formatBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+          Format / Validate
+        </button>
+        <button class="btn-secondary" id="minifyBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+          Minify
+        </button>
+      </div>
+      <div class="action-options">
+        <label class="indent-label" for="indentSelect">Indent:</label>
+        <select id="indentSelect" aria-label="Indentation style">
+          <option value="2" selected>2 spaces</option>
+          <option value="4">4 spaces</option>
+          <option value="tab">Tab</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Error Display -->
+    <div class="error-box" id="errorBox" style="display:none">
+      <div class="error-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+      </div>
+      <div class="error-content">
+        <div class="error-title" id="errorTitle">Invalid JSON</div>
+        <div class="error-detail" id="errorDetail"></div>
+      </div>
+    </div>
+
+    <!-- Success Display -->
+    <div class="success-box" id="successBox" style="display:none">
+      <div class="success-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <div class="success-content">
+        <span class="success-text" id="successText">Valid JSON</span>
+      </div>
+    </div>
+
+    <!-- Output Tabs -->
+    <div class="output-section" id="outputSection" style="display:none">
+      <div class="tabs" role="tablist">
+        <button class="tab active" id="tab-formatted" role="tab" aria-selected="true" data-tab="formatted">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l2-2-2-2"/><path d="M8 18l-2-2 2-2"/><line x1="12" y1="2" x2="12" y2="22"/></svg>
+          Formatted
+        </button>
+        <button class="tab" id="tab-tree" role="tab" aria-selected="false" data-tab="tree">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="3"/><line x1="12" y1="8" x2="12" y2="14"/><circle cx="6" cy="19" r="3"/><circle cx="18" cy="19" r="3"/><line x1="12" y1="14" x2="6" y2="16"/><line x1="12" y1="14" x2="18" y2="16"/></svg>
+          Tree View
+        </button>
+      </div>
+
+      <!-- Formatted Output -->
+      <div class="tab-panel active" id="panel-formatted" role="tabpanel">
+        <div class="card glass output-card">
+          <div class="card-header-row">
+            <h2 class="card-title">Output</h2>
+            <div class="card-actions">
+              <button class="btn-small" id="copyOutputBtn" title="Copy to clipboard">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Copy
+              </button>
+              <button class="btn-small" id="downloadBtn" title="Download as .json">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download
+              </button>
+            </div>
+          </div>
+          <div class="output-wrapper">
+            <pre class="output-pre" id="outputPre"><code id="outputCode"></code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tree View -->
+      <div class="tab-panel" id="panel-tree" role="tabpanel">
+        <div class="card glass output-card">
+          <div class="card-header-row">
+            <h2 class="card-title">Tree View</h2>
+            <div class="card-actions">
+              <button class="btn-small" id="expandAllBtn" title="Expand all nodes">Expand All</button>
+              <button class="btn-small" id="collapseAllBtn" title="Collapse all nodes">Collapse All</button>
+            </div>
+          </div>
+          <div class="tree-wrapper" id="treeWrapper"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ad: Mid page -->
+    <div class="ad-container ad-mid">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2624738239425269"
+           data-ad-slot="SLOT_ID_HERE"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <details class="faq-item" open>
+        <summary><h3>What is JSON formatting?</h3></summary>
+        <p>JSON formatting (also called prettifying or beautifying) adds proper indentation and line breaks to JSON data, making it human-readable. Minified JSON is compact but hard to read. Formatted JSON uses whitespace to show the hierarchical structure of the data, making it easy to understand, debug, and share with colleagues.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary><h3>How do I validate JSON?</h3></summary>
+        <p>Paste your JSON into the input area and click <strong>Format / Validate</strong>. If the JSON contains syntax errors, the tool will show the exact error message along with the line and column number where the problem occurs. Common JSON errors include missing commas, unquoted keys, trailing commas, and using single quotes instead of double quotes.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary><h3>What is the difference between formatting and minifying?</h3></summary>
+        <p>Formatting adds whitespace (indentation and line breaks) to make JSON readable for humans. Minifying removes all unnecessary whitespace to make the JSON as compact as possible, reducing file size for network transfer and storage. Both operations preserve the data exactly. Use formatting for development and debugging. Use minifying for production and APIs.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary><h3>Is this JSON formatter safe to use with sensitive data?</h3></summary>
+        <p>Yes, completely. All processing happens in your browser using JavaScript. No data is ever sent to any server, stored in any database, or logged anywhere. You can verify this by disconnecting from the internet and confirming the tool still works perfectly. Your JSON data never leaves your machine.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary><h3>What is JSON tree view?</h3></summary>
+        <p>Tree view displays your JSON data as an interactive, collapsible hierarchy. Objects and arrays can be expanded or collapsed to explore nested structures. Each node shows its key, value type, and content with color coding. This is especially useful for large or deeply nested JSON documents where reading raw formatted text becomes difficult.</p>
+      </details>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="tips-section">
+      <h2>JSON Quick Tips</h2>
+      <div class="tips-grid">
+        <div class="tip-card glass">
+          <div class="tip-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5a2 2 0 0 0 2 2h1"/><path d="M16 3h1a2 2 0 0 1 2 2v5a2 2 0 0 0 2 2 2 2 0 0 0-2 2v5a2 2 0 0 1-2 2h-1"/></svg>
+          </div>
+          <h3>Always Use Double Quotes</h3>
+          <p>JSON requires double quotes for both keys and string values. Single quotes, unquoted keys, and template literals are not valid JSON.</p>
+        </div>
+        <div class="tip-card glass">
+          <div class="tip-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <h3>No Trailing Commas</h3>
+          <p>Unlike JavaScript, JSON does not allow trailing commas after the last item in an array or object. Remove them before validating.</p>
+        </div>
+        <div class="tip-card glass">
+          <div class="tip-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h3>Valid JSON Types</h3>
+          <p>JSON supports strings, numbers, booleans (true/false), null, objects, and arrays. Undefined, functions, and dates are not valid JSON values.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Sidebar Ad (desktop only) -->
+  <aside class="sidebar-ad">
+    <div class="ad-container ad-sidebar">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2624738239425269"
+           data-ad-slot="SLOT_ID_HERE"
+           data-ad-format="vertical"
+           data-full-width-responsive="false"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </aside>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#">Point Digital Tools</a>
+    </div>
+    <p>Free, private, open. No accounts. No data collection. JSON processed entirely in your browser.</p>
+    <div class="footer-links">
+      <a href="https://password-generator-five-wheat-24.vercel.app/" rel="noopener">Password Generator</a>
+      <span class="footer-dot"></span>
+      <a href="https://blockdoku-web.vercel.app/" rel="noopener">BlockDoku Puzzle</a>
+      <span class="footer-dot"></span>
+      <a href="/">JSON Formatter</a>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "json-formatter",
+  "version": "1.0.0",
+  "description": "Free online JSON formatter, validator, and prettifier",
+  "private": true
+}

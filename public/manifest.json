@@ -1,0 +1,10 @@
+{
+  "name": "JSONPoint - JSON Formatter & Validator",
+  "short_name": "JSONPoint",
+  "description": "Format, validate, minify, and explore JSON data. Free, fast, runs entirely in your browser.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0e14",
+  "theme_color": "#0b0e14",
+  "icons": []
+}
