@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://json-formatter-point.vercel.app/sitemap.xml
+Sitemap: https://json-formatter-dusky.vercel.app/sitemap.xml
